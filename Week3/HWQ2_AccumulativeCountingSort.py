@@ -5,8 +5,8 @@ class Solution:
         for num in nums:
             count[num] += 1
         
-        # count accumulative frequency -> the # of elements that is smaller than num at c-th location 
-        for i in range(2, k):
+        # count accumulative frequency -> the # of elements that is smaller than nums[i] so far
+        for i in range(1, k+1):
             count[i] += count[i-1]
         return count
 
