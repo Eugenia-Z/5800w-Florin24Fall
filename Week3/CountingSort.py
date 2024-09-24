@@ -6,6 +6,7 @@ def CountingSort(nums):
         count[num] += 1
         
     # update the count array to hold its position -> to be cumulative
+    # count[i] tells how many items have digits less than or equal to i at position i
     for i in range(1, length):
         count[i] += count[i-1]
     
@@ -13,7 +14,7 @@ def CountingSort(nums):
     res = [0] * len(nums)
     
     # fillin the output array in reverse order based on the value in countarray
-    for num in nums:
+    for num in reversed(nums):
         res[count[num]-1] = num
         count[num] -= 1
     return res
