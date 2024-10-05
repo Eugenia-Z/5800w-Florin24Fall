@@ -15,8 +15,8 @@ def CountingSort(nums):
     
     # fillin the output array in reverse order based on the value in countarray
     for num in reversed(nums):
-        res[count[num]-1] = num
-        count[num] -= 1
+        res[count[num]-1] = num # Place each item in its correct position based on digit i
+        count[num] -= 1 # decrease the count in count array after placing the item. 
     return res
 
 if __name__ == "__main__":

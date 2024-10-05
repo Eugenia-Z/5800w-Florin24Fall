@@ -1,6 +1,6 @@
 class Solution:
     def heapsort(self, nums):
-        # max-heapify function
+        # max-heapify function -> a RECURSIVE one
         def max_heapify(heap_size, index):
             left,right = 2*index, 2*index + 1
             largest = index # initialize largest as the root
@@ -21,7 +21,6 @@ class Solution:
         for i in range(len(nums)//2 - 1, -1, -1):
             max_heapify(len(nums), i)
             
-        
         # heap sort
         for i in range(len(nums)-1, 0, -1):
             # swap the last element with the first element (max element)
