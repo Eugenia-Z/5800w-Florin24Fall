@@ -1,3 +1,4 @@
+"""CS 5800 HW6 Problem 2&3"""
 def bellman_ford(graph, s):
     # Step1: Initialize distances from source to all other vertices as INFINITE
     distances = {node: float('inf') for node in graph}
@@ -24,8 +25,8 @@ if __name__ == "__main__":
         2: {4:5},
         3: {5:8},
         4: {3:9},
-        # 5: {4:-20},
-        5: {4:-16},
+        5: {4:-20},
+        # 5: {4:-16},
     }
     
     # Run Bellman-Ford algorithm with source node 1
