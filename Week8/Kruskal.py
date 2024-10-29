@@ -1,3 +1,4 @@
+"""CS5800 HW8 Problem 1a. Kruskal's Algorithm for MST"""
 class UnionFind:
     def __init__(self, n):
         self.parent = [i for i in range(n)]

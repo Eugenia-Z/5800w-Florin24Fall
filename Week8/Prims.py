@@ -1,3 +1,4 @@
+"""CS5800 HW8 Problem 1b. Prim's Algorithm for MST"""
 import heapq
 
 def prim(n, graph):
