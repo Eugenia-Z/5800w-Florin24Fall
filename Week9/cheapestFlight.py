@@ -18,14 +18,14 @@ def cheapest_flight(flights, start, end):
         if min_cost.get(curr_city, float('inf')) < curr_cost:
             continue
             
-        # Explore neighbors;
+        # Explore neighbors
         for neighbor, price in graph[curr_city]:
             new_cost = curr_cost + price
             
             # Only push to heap is a cheaper path to neight is found
             if new_cost < min_cost.get(neighbor, float('inf')):
                 min_cost[neighbor] = new_cost
-                heapq.heappush(min_heap, (new_cost,neighbor))
+                heapq.heappush(min_heap, (new_cost, neighbor))
     return min_cost.get(end, -1)
 
 flights = [

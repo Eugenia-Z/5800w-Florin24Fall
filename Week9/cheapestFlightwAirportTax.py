@@ -14,8 +14,8 @@ def min_cost_path_with_split_nodes(flights, airport_taxes, start, end):
         graph[f"{city}_in"].append((f"{city}_out", tax))
     
     # Priority queue for Dijkstra's algorithm
-    pq = [(airport_taxes[start], f"{start}_in")]  #(cost, node)
-    min_cost = {f"{start}_in": airport_taxes[start]}
+    pq = [(0, f"{start}_in")]  #(cost, node)
+    min_cost = {f"{start}_in": 0}
     
     while pq:
         curr_cost, node = heapq.heappop(pq)
@@ -27,7 +27,7 @@ def min_cost_path_with_split_nodes(flights, airport_taxes, start, end):
         # Relax edges:
         for neighbor, edge_cost in graph[node]:
             new_cost = curr_cost + edge_cost
-            if neighbor not in min_cost or new_cost < min_cost[neighbor]:
+            if new_cost < min_cost.get(neighbor, float('inf')):
                 min_cost[neighbor] = new_cost
                 heapq.heappush(pq, (new_cost, neighbor))
                 
