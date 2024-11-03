@@ -37,4 +37,4 @@ flights = [
     ('D', 'E', 100)
 ]
 
-print(cheapest_flight(flights, 'A', 'E'))
+print("Minimum cost from A to E:", cheapest_flight(flights, 'A', 'E'))

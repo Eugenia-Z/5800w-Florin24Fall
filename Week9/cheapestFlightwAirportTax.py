@@ -14,6 +14,8 @@ def min_cost_path_with_split_nodes(flights, airport_taxes, start, end):
         graph[f"{city}_in"].append((f"{city}_out", tax))
     
     # Priority queue for Dijkstra's algorithm
+    # The starting node cost should be 0 in the priority queue since the airport tax for start 
+    # is added as the cost to reach start_out (the "out" version after processing the tax).
     pq = [(0, f"{start}_in")]  #(cost, node)
     min_cost = {f"{start}_in": 0}
     
