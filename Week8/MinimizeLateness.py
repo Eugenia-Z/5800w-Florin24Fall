@@ -1,7 +1,7 @@
 # Python code to schedule jobs to minimize lateness
 def minimize_lateness(jobs):
     # Step 1: sort the job based on deadlines
-    
+    jobs.sort(key=lambda x:x[1])
     # Declare variables:
     current_time = 0
     max_lateness = 0
