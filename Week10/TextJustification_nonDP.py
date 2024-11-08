@@ -11,8 +11,14 @@ def full_justify(words, max_width):
             # if cannot add more word to this line, start process it
             
             # To distribute spaces for the current line, we actually need a bit iteration (test and learn) to find out 
+            # there is a total of (max_width-curr_line_length) much of the space to distribute.
+            # each iteration essentially just distribute one space only
+            # But by using the modulo operation, we're actually able to do it in a cyclic manner.
+            # As always the best way to understand the code is to dry run! 
             for i in range(max_width - curr_line_length):
-                curr_line[i % (len(curr_line) - 1 or 1)] += ' '
+                # rotates the additional spaces across the gaps between words. 
+                # by cycling through the gaps, the code distributes extra space as evenly as possible from left to right.
+                curr_line[i % max(len(curr_line) - 1,1)] += ' '
             
             # Join words to form the justified line and add to result
             result.append(''.join(curr_line))
