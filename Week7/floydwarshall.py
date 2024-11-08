@@ -2,7 +2,7 @@ def Floyd_Warshall_All_Pairs(graph):
     # num of vertices in the graph
     n = len(graph)
     
-    # initialize 3 types of value: edge exisit, edge to itself, edge doesn't exist
+    # initialize 3 types of value: edge exists, edge to itself, edge doesn't exist
     
     # Initialize the distance matrix with the graph values
     distance = [[float('inf')] * n for _ in range(n)]
@@ -20,7 +20,7 @@ def Floyd_Warshall_All_Pairs(graph):
     for k in range(n):
         for i in range(n):
             for j in range(n):
-                # If the path through vertext k is shorter, update distance[i][j]
+                # If the path through vertice k is shorter, update distance[i][j]
                 if distance[i][k] + distance[k][j] < distance[i][j]:
                     distance[i][j] = distance[i][k] + distance[k][j]
     return distance

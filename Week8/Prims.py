@@ -18,10 +18,10 @@ def prim(n, graph):
         visited.add(curr)
         total_cost += weight
         
-        # Add edges to the heap
+        # Add edges to the mst
         if parent is not None:
             mst.append((parent, curr, weight))
-        
+        # Add edges to the heap
         for neighbor, neighbor_weight in graph[curr]:
             heapq.heappush(min_heap, (neighbor_weight, neighbor, curr))
                 

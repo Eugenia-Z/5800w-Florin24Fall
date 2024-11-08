@@ -4,7 +4,7 @@ def topological_sort(V, adj):
     in_degree = [0] * V
     for u in range(V):
         for v, _ in adj[u]:
-            in_degree[v] += 1
+            in_degree[v] +9= 1
     
     # 入度为0的先入queue
     queue = deque([i for i in range(V) if in_degree[i] == 0])
