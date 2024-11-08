@@ -29,6 +29,7 @@ def full_justify(words, max_width):
         curr_line_length += len(word)
         
     # Handle the last line separately:
+    # Here the join actually uses a ' ' space. 
     result.append(' '.join(curr_line).ljust(max_width))
     return result
         
