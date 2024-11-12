@@ -1,4 +1,5 @@
 def las_recursion(A):
+    """A recursive approach to compute LAS with separate recursive functions"""
     n = len(A)
     memo_up = [-1] * n
     memo_down = [-1] * n
@@ -30,8 +31,9 @@ def las_recursion(A):
     return las_length
 
 def las_bottom_up(A):
+    """A bottom-up iterative approach to solve LAS problem """
     n = len(A)
-    # init tables
+    # init to 1
     Vu = [1] * n
     Vd = [1] * n
     
@@ -45,7 +47,9 @@ def las_bottom_up(A):
     las = max(max(Vu), max(Vd))
     return las
 
+
 def las_one_pass(A):
+    """Greedy strategy using local extremum"""
     n = len(A)
     inc = 1
     dec = 1
@@ -55,7 +59,12 @@ def las_one_pass(A):
         elif A[i] < A[i-1]:
             dec = inc + 1
     return max(inc, dec)
+
 # Driver Code
 A = [10, 22, 9, 33, 49, 50, 31, 60]
-print("Length of Longest alternating subsequence is",
+print("Length of Longest alternating subsequence using recursion: ",
       las_recursion(A))
+print("Length of Longest alternating subsequence using bottom up dynamic programming: ",
+      las_bottom_up(A))
+print("Length of Longest alternating subsequence using greedy one pass strategy: ",
+      las_one_pass(A))
