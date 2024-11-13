@@ -47,7 +47,25 @@ def las_bottom_up(A):
     las = max(max(Vu), max(Vd))
     return las
 
-
+def las_2d_bottom_up(A):
+    n = len(A)
+    dp = [[1,1] for _ in range(n)]  # dp[i][0] for increasing, dp[i][1] for decreasing
+    
+    for i in range(1, n):
+        for j in range(i):
+            if A[i] > A[j]:
+                # arr[i] can be part of an increasing subsequence
+                dp[i][0] = max(dp[i][0], dp[j][1] + 1)
+            elif A[i] < A[j]:
+                # arr[i] can be part of a decreading subsequence
+                dp[i][1] = max(dp[i][1], dp[j][0] + 1)
+                
+    # Find the maximum length among all subsequences
+    max_len = 1
+    for i in range(n):
+        max_len = max(max_len, dp[i][0], dp[i][1])
+    return max_len
+    
 def las_one_pass(A):
     """Greedy strategy using local extremum"""
     n = len(A)
@@ -66,5 +84,7 @@ print("Length of Longest alternating subsequence using recursion: ",
       las_recursion(A))
 print("Length of Longest alternating subsequence using bottom up dynamic programming: ",
       las_bottom_up(A))
+print("Length of Longest alternating subsequence using 2d bottom-up dynamic programming: ",
+      las_2d_bottom_up(A))
 print("Length of Longest alternating subsequence using greedy one pass strategy: ",
       las_one_pass(A))
