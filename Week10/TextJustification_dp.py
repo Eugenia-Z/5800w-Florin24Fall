@@ -13,6 +13,7 @@ def text_justification (words, max_width):
     # init DP table:
     # dp[i] represents the minimum total cost for justifying the paragraph from the word i to the end
     dp = [float('inf')] * (n+1)
+    
     # base case: no cost for empty ending (our goal: dp[0])
     dp[n] = 0 
     
@@ -48,3 +49,6 @@ min_cost, justified_text = text_justification(words, max_width)
 print("The minimum cost of justifying the text: ", min_cost)
 for line in justified_text:
     print(f"{line}")
+    
+# this is a O(n^2) solution due to the nested loops for filling dp and calculating line costs.
+# Space Complexity: O(n) as we store the minimum cost up to each word index in the dp array. 
