@@ -24,6 +24,33 @@ def edit_distance(s1, s2):
                                )
     return dp[m][n]
 
+
+def edit_distance_1d(s1, s2):
+    m = len(s1)
+    n = len(s2)
+    dp = [0] * (n+1)
+    
+    # still need to init the first row with all the value of another str length
+    for j in range(1, n+1):
+        dp[j] = j
+    
+    # populate the row and update for m times
+    for i in range(1, m+1):
+        # init prev (diagnol value in 2D to dp[0])
+        prev = dp[0]
+        # init the dp[0] value: the distance itself is the index
+        dp[0] = i
+        for j in range(1, n+1):    
+            # use a temp value to store dp[j] from last iteration to prevent overwriting
+            temp = dp[j]
+            if s1[i-1] == s2[j-1]:
+                dp[j] = prev 
+            else:
+                dp[j] = min(dp[j], dp[j-1], prev) + 1 # choose the min cost from top, left, and diagnol
+            prev = temp # store the dp[j] as the diagnol value for next iteration
+        return dp[n]
+    
+    
 # Example Usage
 s1 = "kitten"
 s2 = "sitting"
