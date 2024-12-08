@@ -1,5 +1,7 @@
 # A python solution to Maximum Indepedent Set(MIS) problem
 from collections import defaultdict
+# this solution applies to mul-ti branches
+# for binary trees, using variables instead of DP table will suffice.
 
 def max_independent_set(tree, root = 0):
     n = len(tree)
@@ -12,11 +14,12 @@ def max_independent_set(tree, root = 0):
         dp[u][0] = 0  # When u is not include in the independent set
         dp[u][1] = 1  # When u is included in the independent set
         
+        # this for loop allows for multi-branches
         for v in tree[u]:
             if not visited[v]:
                 dfs(v)
-                dp[u][0] += max(dp[v][0], dp[v][1])
-                dp[u][1] += dp[v][0]
+                dp[u][0] += max(dp[v][0], dp[v][1]) # when not inclu u, can include or not inclue its child v
+                dp[u][1] += dp[v][0]  # when inclu u, must not inclue its child v
                 
     # Start DFS from the root
     dfs(root)

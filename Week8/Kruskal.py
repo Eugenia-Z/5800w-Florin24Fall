@@ -30,6 +30,7 @@ def kruskal(n, graph):
         for v, weight in graph[u]:
             if (node_map[u], node_map[v], weight) not in edges:
                 edges.append((node_map[u], node_map[v], weight)) # convert graph dict to a list of tuples
+                
     edges.sort(key=lambda x:(x[2],x[0],x[1]))
     uf = UnionFind(n)
     mst = []

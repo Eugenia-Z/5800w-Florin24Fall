@@ -1,3 +1,4 @@
+# Using dict actually makes it a higher dimension, storing all the actual strings! Impressive! 
 def lcs(X, Y):
     V = {}  # init to dict
     for i in range(len(X) + 1): 
@@ -16,7 +17,7 @@ def lcs(X, Y):
 print(lcs('xxxxxaxxxbxxc', 'abc'))
 
 
-# Using dict actually makes it a higher dimension, storing all the actual strings! Impressive! 
+
 def LCS_2d(str1, str2):
     m = len(str1)
     n = len(str2)
